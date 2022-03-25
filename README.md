@@ -83,6 +83,7 @@ Step 4, enter the adapted scheme directory and run the script.
   ```
 
 ## Citation
+Liou CH, Wu HC, Liao YC, Yang Lauderdale TL, Huang IW, Chen FJ. 2020. nanoMLST: accurate multilocus sequence typing using Oxford Nanopore Technologies MinION with a dual-barcode approach to multiplex large numbers of samples. Microb Genom 6.
 
 <!-- CONTACT -->
 ## Contact
