@@ -23,7 +23,7 @@
 
 ## Introduction
 
-ONT 9.4.1 flowcell is prone to generate indel (insertion/deletion) errors in homopolymer regions (single base repeating regions). This tool is used to correct these errors appearing in the core genes of bacteria. The corrected sequence has improved allelic call results for cgMLST analysis. In our testing dataset, the number of allelic call errors was reduced by 76.5%. 
+ONT 9.4.1 flowcell is prone to generate indel (insertion/deletion) errors in homopolymer regions (single base repeating regions). This tool is used to correct these errors appearing in the core genes of bacteria. The corrected sequence has improved allelic call results for cgMLST analysis. In our testing dataset, the number of allelic call errors was reduced by 70.5%. 
 
 This tool is built based on the concept of NanoMLST. However, NanoMLST can only be applied to the traditional 7-gene MLST. This tool enables such concept to be applied to cgMLST. We borrowed and modified a key function of NanoMLST’s script and supplied with our own algorithms/codes to make it work for cgMLST. 
 
@@ -38,17 +38,11 @@ Detailed algorithms and logical flowchart for this correction approach are descr
 
 For our correction approach, we assume Enterobase cgMLST schemes contain complete alleles of the bacteria species. For the DNA sequence of an isolate, if there is no allele in the scheme matching it, we assume it is always a sequencing error. However, it is possible that such no-match results from a new allele, but we assume the possibility is extremely low. 
 
-Although we use chewbbaca adapted scheme to perform homopolymer error correction, we cannot use the adapted scheme for Enterobase cgMLST allelic call, since current Enterobase allelic calling does not support customized scheme. Chewbbaca allelic caller generates a bit different allelic call result from Enterobase. Therefore, we use chewbbaca adapted scheme to perform homopolymer error correction but use Enterobase to perform cgMLST allelic call. The discrepancy between the two schemes leads to a “mis-correction” problem (details are described in the publication paper). However, our correction approach still improves the allelic call accuracy by 70% to 80% overall. 
+Although we use chewbbaca adapted scheme to perform homopolymer error correction, we cannot use the adapted scheme for Enterobase cgMLST allelic call, since current Enterobase allelic calling does not support customized scheme. Chewbbaca allelic caller generates a bit different allelic call result from Enterobase. Therefore, we use chewbbaca adapted scheme to perform homopolymer error correction but use Enterobase to perform cgMLST allelic call. The discrepancy between the two schemes leads to a “mis-correction” problem (details are described in the publication paper). However, our correction approach still improves the allelic call accuracy by around 70% overall. 
 
 ## Remaining Errors
 
 The remaining errors are mostly “mis-correction” and some uncorrected homopolymer errors, mismatches and insertions. Details are presented in the publication paper.
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
 
 ## Software Required
 
@@ -68,12 +62,11 @@ This is an example of how to list things you need to use the software and how to
 
 
 ## Usage
-
 Step 1, download cgMLST raw scheme from Enterobase. 
 
 Step 2, use chewbbaca to clean up invalid alleles present in the Enterobase raw scheme
 
-* First, download the Prodigal training file (.trn) for your bacteria species <a href="https://github.com/B-UMMI/chewBBACA/tree/master/CHEWBBACA/prodigal_training_files"><strong>here</strong></a>
+* First, download the Prodigal training file (.trn) for your bacteria species <a href="https://github.com/B-UMMI/chewBBACA/tree/master/CHEWBBACA/prodigal_training_files"><strong>here</strong></a>.
 
 * Then, run:
   ```sh
@@ -82,11 +75,12 @@ Step 2, use chewbbaca to clean up invalid alleles present in the Enterobase raw 
 
 Step 3, open the script file, fill in the absolute paths to your sample directory and the adapted scheme directory
 
-Step 4, enter the adapted scheme directory and run the script. Then run:
-```sh
-cd path/to/adapted_scheme
-python path/to/script.py
-```
+Step 4, enter the adapted scheme directory and run the script. 
+* Then run:
+  ```sh
+  cd path/to/adapted_scheme
+  python path/to/script.py
+  ```
 
 ## Citation
 
